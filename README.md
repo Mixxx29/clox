@@ -1,1 +1,1 @@
-# clox
+# clox - C Lox Language Compiler
