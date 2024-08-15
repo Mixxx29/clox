@@ -11,12 +11,19 @@ typedef enum
 	OP_RETURN,
 } OpCode;
 
+typedef struct
+{
+	int count;
+	int capacity;
+	int* lines;
+} LineArray;
+
 typedef struct 
 {
 	int count;
 	int capacity;
 	uint8_t* code;
-	int* lines;
+	LineArray lines;
 	ValueArray constants;
 } Chunk;
 
@@ -24,6 +31,6 @@ void initChunk(Chunk* chunk);
 void freeChunk(Chunk* chunk);
 void writeChunk(Chunk* chunk, uint8_t byte, int line);
 int addConstant(Chunk* chunk, Value value);
-int getLine(int offset);
+int getLine(Chunk* chunk, int offset);
 
 #endif
